@@ -23,6 +23,5 @@ from cogeo_siege.siege import create_config
 )
 @click.version_option(version=__version__, message="%(version)s")
 def siege(input, output, minzoom, maxzoom, quiet):
-    """cogeo_siege."""
-
+    """Create Siege configuration file from COG."""
     create_config(input, output, minzoom=minzoom, maxzoom=maxzoom, quiet=quiet)
