@@ -1,1 +1,1 @@
-"""cog_siege tests suite."""
+"""rio-siege tests suite."""

@@ -1,17 +1,17 @@
-# cogeo-siege
+# rio-siege
 
 <p align="center">
-  <a href="https://github.com/developmentseed/cogeo-siege/actions?query=workflow%3ACI" target="_blank">
-      <img src="https://github.com/developmentseed/cogeo-siege/workflows/CI/badge.svg" alt="Test">
+  <a href="https://github.com/developmentseed/rio-siege/actions?query=workflow%3ACI" target="_blank">
+      <img src="https://github.com/developmentseed/rio-siege/workflows/CI/badge.svg" alt="Test">
   </a>
-  <a href="https://codecov.io/gh/developmentseed/cogeo-siege" target="_blank">
-      <img src="https://codecov.io/gh/developmentseed/cogeo-siege/branch/main/graph/badge.svg" alt="Coverage">
+  <a href="https://codecov.io/gh/developmentseed/rio-siege" target="_blank">
+      <img src="https://codecov.io/gh/developmentseed/rio-siege/branch/main/graph/badge.svg" alt="Coverage">
   </a>
-  <a href="https://pypi.org/project/cogeo-siege" target="_blank">
-      <img src="https://img.shields.io/pypi/v/cogeo-siege?color=%2334D058&label=pypi%20package" alt="Package version">
+  <a href="https://pypi.org/project/rio-siege" target="_blank">
+      <img src="https://img.shields.io/pypi/v/rio-siege?color=%2334D058&label=pypi%20package" alt="Package version">
   </a>
-  <a href="https://github.com/developmentseed/cogeo-siege/blob/main/LICENSE" target="_blank">
-      <img src="https://img.shields.io/github/license/developmentseed/cogeo-siege.svg" alt="Downloads">
+  <a href="https://github.com/developmentseed/rio-siege/blob/main/LICENSE" target="_blank">
+      <img src="https://img.shields.io/github/license/developmentseed/rio-siege.svg" alt="Downloads">
   </a>
 </p>
 
@@ -19,32 +19,30 @@
 
 **Documentation**:
 
-**Source Code**: <a href="https://github.com/developmentseed/cogeo-siege" target="_blank">https://github.com/developmentseed/cogeo-siege</a>
+**Source Code**: <a href="https://github.com/developmentseed/rio-siege" target="_blank">https://github.com/developmentseed/rio-siege</a>
 
 ---
 
 ## Description
 
-Create [siege](https://github.com/JoeDog/siege) configuration files from Cloud Optimized GeoTIFF.
+Create [siege](https://github.com/JoeDog/siege) configuration files from Raster datasets.
 
 This project is mostly inspired from the great [TileSiege](https://github.com/bdon/TileSiege)
 
-
-
 ## Install
 
-You can install `cogeo-siege` using pip
+You can install `rio-siege` using pip
 
 ```bash
 $ pip install -U pip
-$ pip install -U cogeo-siege
+$ pip install -U rio-siege
 ```
 
 or install from source:
 
 ```bash
-$ git clone https://github.com/developmentseed/cogeo-siege.git
-$ cd cogeo-siege
+$ git clone https://github.com/developmentseed/rio-siege.git
+$ cd rio-siege
 $ pip install -U pip
 $ pip install -e .
 ```
@@ -52,22 +50,23 @@ $ pip install -e .
 ## Usage
 
 ```
-$ cogeo-siege --help
-Usage: cogeo-siege [OPTIONS] INPUT
+$ rio siege --help
+Usage: rio siege [OPTIONS] INPUT
 
-  Create Siege configuration file from COG.
+  Create Siege configuration file from raster datasets.
 
 Options:
-  -o, --output PATH  Output file name  [required]
-  --minzoom INTEGER  Overide COG MinZoom.
-  --maxzoom INTEGER  Overide COG MaxZoom.
-  -q, --quiet        Remove progressbar and other non-error output.
-  --version          Show the version and exit.
-  --help             Show this message and exit.
+  -o, --output PATH            Output file name  [required]
+  -n, --number-of-url INTEGER  Number of URL.  [default: 1000]
+  --minzoom INTEGER            Override Dataset MinZoom.
+  --maxzoom INTEGER            Override Dataset MaxZoom.
+  -q, --quiet                  Remove progressbar and other non-error output.
+  --version                    Show the version and exit.
+  --help                       Show this message and exit.
 ```
 
 ```
-$ cogeo-siege my_cog.tif -o test.txt
+$ rio siege my_cog.tif -o test.txt
  6 |   677 █████
  7 |   731 █████
  8 |   873 ██████
@@ -81,25 +80,26 @@ $ head test.txt
 PROT=http
 HOST=localhost
 PORT=8080
-PATH=my_cog.tif
-EXT=pbf
-$(PROT)://$(HOST):$(PORT)/$(PATH)6/35/22.$(EXT)
-$(PROT)://$(HOST):$(PORT)/$(PATH)6/35/21.$(EXT)
-$(PROT)://$(HOST):$(PORT)/$(PATH)6/34/22.$(EXT)
-$(PROT)://$(HOST):$(PORT)/$(PATH)6/35/22.$(EXT)
-$(PROT)://$(HOST):$(PORT)/$(PATH)6/33/22.$(EXT)
+PATH=tiles/
+EXT=.png
+QUERYSTRING=?url=http://127.0.0.1:8000/world.tif
+$(PROT)://$(HOST):$(PORT)/$(PATH)0/1/1$(EXT)$(QUERYSTRING)
+$(PROT)://$(HOST):$(PORT)/$(PATH)0/0/2$(EXT)$(QUERYSTRING)
+$(PROT)://$(HOST):$(PORT)/$(PATH)0/1/2$(EXT)$(QUERYSTRING)
+$(PROT)://$(HOST):$(PORT)/$(PATH)0/1/1$(EXT)$(QUERYSTRING)
+$(PROT)://$(HOST):$(PORT)/$(PATH)0/1/2$(EXT)$(QUERYSTRING)
 ```
 
 ## Contribution & Development
 
-See [CONTRIBUTING.md](https://github.com/developmentseed/cogeo-siege/blob/main/CONTRIBUTING.md)
+See [CONTRIBUTING.md](https://github.com/developmentseed/rio-siege/blob/main/CONTRIBUTING.md)
 
 ## Authors
 
 Created by [Development Seed](<http://developmentseed.org>)
 
-See [contributors](https://github.com/developmentseed/cogeo-siege/graphs/contributors) for a listing of individual contributors.
+See [contributors](https://github.com/developmentseed/rio-siege/graphs/contributors) for a listing of individual contributors.
 
 ## License
 
-See [LICENSE](https://github.com/developmentseed/cogeo-siege/blob/main/LICENSE)
+See [LICENSE](https://github.com/developmentseed/rio-siege/blob/main/LICENSE)
