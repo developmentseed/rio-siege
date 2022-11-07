@@ -83,7 +83,6 @@ def create_config(
                     "max": min(lr_tile.y, minmax["y"]["max"]),
                 },
             }
-        print(extremas)
 
         with open(output, "w") as f:
             f.write("PROT=http\n")
