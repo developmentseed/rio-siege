@@ -61,6 +61,12 @@ path = "rio_siege/__init__.py"
 [tool.hatch.build.targets.sdist]
 exclude = [
   "/tests",
+  ".github",
+  ".bumpversion.cfg",
+  ".flake8",
+  ".gitignore",
+  ".pre-commit-config.yaml",
+  "CONTRIBUTING.md",
 ]
 
 [build-system]
