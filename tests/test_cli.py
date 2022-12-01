@@ -29,3 +29,9 @@ def test_siege():
         result = runner.invoke(siege, [cog_path, "-o", "tmp.txt", "--minzoom", 8])
         assert not result.exception
         assert result.exit_code == 0
+
+        result = runner.invoke(
+            siege, [cog_path, "-o", "tmp.txt", "--tms", "WGS1984Quad"]
+        )
+        assert not result.exception
+        assert result.exit_code == 0
